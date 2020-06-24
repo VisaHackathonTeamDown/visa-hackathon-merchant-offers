@@ -26,8 +26,8 @@ public class OfferController {
 
     // Accept request with location and distance parameters
     @GetMapping("/offers")
-    public List<Offer> offers(@RequestParam(value = "origin", defaultValue = "San Jose") String origin,
-                       @RequestParam(value = "radius", defaultValue = "10") int radius) throws Exception {
+    public List<Offer> offers(@RequestParam(value = "origin", defaultValue = "37.3382,121.8863") String origin,
+                       @RequestParam(value = "radius", defaultValue = "600") int radius) throws Exception {
 
         // Query VMORC to get a list of nearby offers
         List<Offer> offers = findNearbyOffers(origin, radius);
@@ -47,7 +47,8 @@ public class OfferController {
         List <Offer> offers = new ArrayList<Offer>();
 
         // Send GET request
-        OffersResponse offersResponse = restTemplate.getForObject("https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39", OffersResponse.class);
+        String url = "https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39";
+        OffersResponse offersResponse = restTemplate.getForObject(url, OffersResponse.class);
                     
         // Process response data
         JSONObject offersObject = new JSONObject(offersResponse.toString());
