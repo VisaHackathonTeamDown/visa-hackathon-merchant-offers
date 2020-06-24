@@ -20,6 +20,6 @@ public class Offers {
 
     @Override
     public String toString() {
-        return offerTitle;
+        return "{\"offerTitle\": \"" + offerTitle + "\"}";
     }
 }

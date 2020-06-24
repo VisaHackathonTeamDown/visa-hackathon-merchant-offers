@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -15,16 +16,27 @@ import org.springframework.util.ResourceUtils;
 
 import javax.net.ssl.SSLContext;
 
+import java.util.List;
+import java.util.ArrayList;
+
 @RestController
 public class OfferController {
 
-    private final int offerId = 102358;
-    private final int merchantId = 101459;
-    private String merchantName = "Merchant Four";
+    List<Offer> offers;
+    String origin;
+    int radius;
 
-    @GetMapping("/offer")
-    public Offer offer(@RequestParam(value = "offerId", defaultValue = "102358") int offerId) {
-        return new Offer(offerId, merchantId, merchantName);
+    // Accept request with location and distance parameters
+    @GetMapping("/offers")
+    public List<Offer> offers(@RequestParam(value = "origin", defaultValue = "San Jose") String origin,
+                       @RequestParam(value = "radius", defaultValue = "10") int radius) {
+
+        // Query VMORC to get a list of nearby offers
+        this.origin = origin;
+        this.radius = radius;
+
+        // Return list of offers for nearby small merchants
+        return offers;
     }
 
     @Bean
@@ -51,9 +63,11 @@ public class OfferController {
     @Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
+            offers = new ArrayList<>();
             // Send GET request
-            OffersResponse offers = restTemplate.getForObject("https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39", OffersResponse.class);
-            merchantName = offers.toString();
+            OffersResponse offersList = restTemplate.getForObject("https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39", OffersResponse.class);
+            JSONObject offersObject = new JSONObject(offersList.toString());
+            offers.add(new Offer(5, 5, offersObject.get("offerTitle").toString()));
         };
     }
 }
