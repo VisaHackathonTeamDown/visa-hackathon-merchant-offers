@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -64,10 +65,17 @@ public class OfferController {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
             offers = new ArrayList<>();
+
             // Send GET request
-            OffersResponse offersList = restTemplate.getForObject("https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39", OffersResponse.class);
-            JSONObject offersObject = new JSONObject(offersList.toString());
-            offers.add(new Offer(5, 5, offersObject.get("offerTitle").toString()));
+            OffersResponse offersResponse = restTemplate.getForObject("https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39", OffersResponse.class);
+            
+            // Process response data
+            JSONObject offersObject = new JSONObject(offersResponse.toString());
+            JSONArray offersArray = offersObject.getJSONArray("offers");
+            for (int i = 0; i < offersArray.length(); i++) {
+                String offerTitle = offersArray.getJSONObject(i).get("offerTitle").toString();
+                offers.add(new Offer(5, 5, offerTitle));
+            }
         };
     }
 }
