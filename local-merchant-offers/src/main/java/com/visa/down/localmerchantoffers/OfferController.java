@@ -4,31 +4,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.util.ResourceUtils;
+
+import javax.net.ssl.SSLContext;
 
 @RestController
 public class OfferController {
 
+    private RestTemplate restTemplate;
+
     // Accept request with location and distance parameters
     @GetMapping("/offers")
-    public List<Offer> offers(@RequestParam(value = "origin", defaultValue = "San Jose") String origin,
-                       @RequestParam(value = "radius", defaultValue = "10") int radius) {
+    public Offers[] offers(@RequestParam(value = "origin", defaultValue = "38.889321,-77.050166") String origin,
+                       @RequestParam(value = "radius", defaultValue = "10") int radius) throws Exception {
 
         // Query VMORC to get a list of nearby offers
-        List<Offer> offers = findNearbyOffers(origin, radius);
+        Offers[] offers = findNearbyOffers(origin, radius);
 
-        // Iterate through each offer to filter
-        ListIterator<Offer> iter = offers.listIterator();
-        while (iter.hasNext()) {
-            Offer offer = iter.next();
-            // Remove large merchants
-            if (isLargeMerchant(offer.getMerchantName()))
-                iter.remove();
-        }
-
-        // Return list of offers for nearby small merchants
         return offers;
     }
 
@@ -39,29 +38,33 @@ public class OfferController {
      * @param radius - range (in miles)
      * @return list of Offer objects
      */
-    private List<Offer> findNearbyOffers(String origin, int radius) {
-        List <Offer> offers = new ArrayList<Offer>();
+    private Offers[] findNearbyOffers(String origin, int radius) throws Exception {
+        // Send GET request
+        String url = "https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39&origin=" + origin + "&radius=" + radius;
+        OffersResponse offersResponse = restTemplate.getForObject(url, OffersResponse.class);
+        //JSONObject offersObject = new JSONObject(offersResponse.toString());
 
-        // Need to add API call implementation
-
-        offers.add(new Offer(102358, 101459, "Merchant Four"));
-        offers.add(new Offer(101586, 105976, "Merchant Two"));
-        offers.add(new Offer(105832, 103574, "Merchant Three"));
-
-        return offers;
+        return offersResponse.getOffers();
     }
 
-    /**
-     * Calls to ____ API to determine if merchant is small or large
-     * @param merchant - name of the merchant
-     * @return true if merchant is large
-     */
-    private boolean isLargeMerchant(String merchant) {
+    @Bean
+	public RestTemplate restTemplate(RestTemplateBuilder builder) throws Exception {
+        // Load SSL certificate
+        SSLContext sslContext = SSLContextBuilder
+                .create()
+                .loadKeyMaterial(ResourceUtils.getFile("src/main/resources/keyAndCertBundle.jks"), "password".toCharArray(), "password".toCharArray())
+                .loadTrustMaterial(ResourceUtils.getFile("src/main/resources/keyAndCertBundle.jks"), "password".toCharArray())
+                .build();
 
-        // Need to add API call implementation
+        // Build HTTP client to add authentication
+        HttpClient client = HttpClients.custom()
+                .setSSLContext(sslContext)
+                .build();
 
-        if (merchant.equals("Merchant Two"))
-            return true;
-        return false;
+        // Combine SSL certification with HTTP authentication
+        return this.restTemplate = builder
+                .requestFactory(() -> new HttpComponentsClientHttpRequestFactory(client))
+                .basicAuthentication("3V109YSKMG2EEX90J48H21peSXcSLEM0z0T9vZK_gMHn7UWtI", "PwZ715kLn01rjfEX2Tr2vwOHy5VAt")
+                .build();
     }
 }
