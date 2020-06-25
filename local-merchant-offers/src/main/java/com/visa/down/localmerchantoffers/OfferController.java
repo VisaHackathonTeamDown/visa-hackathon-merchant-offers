@@ -11,9 +11,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContextBuilder;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.util.ResourceUtils;
 
 import javax.net.ssl.SSLContext;
+import java.io.InputStream;
+import java.security.KeyStore;
 
 @RestController
 public class OfferController {
@@ -49,11 +50,15 @@ public class OfferController {
 
     @Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) throws Exception {
+        KeyStore ks = KeyStore.getInstance("JKS");
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("keyAndCertBundle.jks");
+        ks.load(inputStream, "password".toCharArray());
+
         // Load SSL certificate
         SSLContext sslContext = SSLContextBuilder
                 .create()
-                .loadKeyMaterial(ResourceUtils.getFile("src/main/resources/keyAndCertBundle.jks"), "password".toCharArray(), "password".toCharArray())
-                .loadTrustMaterial(ResourceUtils.getFile("src/main/resources/keyAndCertBundle.jks"), "password".toCharArray())
+                .loadKeyMaterial(ks, "password".toCharArray())
+                .loadTrustMaterial(ks, null)
                 .build();
 
         // Build HTTP client to add authentication
