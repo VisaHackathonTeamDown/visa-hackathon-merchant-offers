@@ -35,7 +35,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-<<<<<<< HEAD
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,8 +53,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.10.0.pr1</version>
         </dependency>
-=======
->>>>>>> 17e2828b0650480562f35813d337911e8646346f
 	</dependencies>
 
 	<build>
