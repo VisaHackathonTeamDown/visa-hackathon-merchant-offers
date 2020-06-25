@@ -22,6 +22,6 @@ public class Description {
     public String toString() {
         //return "{\"richText\": \"" + richText + "\","
         //        + "\"text\": \"" + text + "\"}";
-        return "{\"text\": \"" + text + "\"}";
+        return text;
     }
 }

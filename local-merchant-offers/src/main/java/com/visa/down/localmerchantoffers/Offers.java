@@ -59,14 +59,14 @@ public class Offers {
     public String toString() {
         return "{\"offerId\": \"" + offerId + "\","
                 + "\"offerTitle\": \"" + offerTitle + "\","
+                + "\"merchant\": " + merchantList[0] + ","
                 + "\"active\": \"" + activeIndicator + "\","
                 + "\"validityFrom\": \"" + validityFromDateTime + "\","
                 + "\"validityTo\": \"" + validityToDateTime + "\","
                 + "\"redemptionChannels\": " + Arrays.toString(redemptionChannelList) + ","
-                + "\"shortDescription\": " + offerShortDescription + ","
-                + "\"longDescription\": " + offerCopy + ","
+                + "\"shortDescription\": \"" + offerShortDescription + "\","
+                + "\"longDescription\": \"" + offerCopy + "\","
                 + "\"cardPaymentTypes\": " + Arrays.toString(cardPaymentTypeList) + ","
-                + "\"categories\": " + Arrays.toString(categorySubcategoryList) + ","
-                + "\"merchant\": " + merchantList[0] + "}";
+                + "\"categories\": " + Arrays.toString(categorySubcategoryList) + "}";
     }
 }

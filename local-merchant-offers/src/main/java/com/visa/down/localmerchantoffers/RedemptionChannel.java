@@ -15,6 +15,6 @@ public class RedemptionChannel {
 
     @Override
     public String toString() {
-        return "{\"channel\": \"" + value + "\"}";
+        return "\"" + value + "\"";
     }
 }
