@@ -24,10 +24,12 @@ public class OfferController {
     // Accept request with location and distance parameters
     @GetMapping("/offers")
     public Offers[] offers(@RequestParam(value = "origin", defaultValue = "38.889321,-77.050166") String origin,
-                       @RequestParam(value = "radius", defaultValue = "10") int radius) throws Exception {
+                           @RequestParam(value = "radius", defaultValue = "10") int radius,
+                           @RequestParam(value = "category", defaultValue = "0") String category,
+                           @RequestParam(value = "subcategory", defaultValue = "0") String subcategory) throws Exception {
 
         // Query VMORC to get a list of nearby offers
-        Offers[] offers = findNearbyOffers(origin, radius);
+        Offers[] offers = findNearbyOffers(origin, radius, category, subcategory);
 
         return offers;
     }
@@ -37,11 +39,19 @@ public class OfferController {
      *
      * @param origin - latitude and longitude of target
      * @param radius - range (in miles)
+     * @param category - category of merchant (id)
+     * @param subcategory - subcategory of merchant (id)
      * @return list of Offer objects
      */
-    private Offers[] findNearbyOffers(String origin, int radius) throws Exception {
+    private Offers[] findNearbyOffers(String origin, int radius, String category, String subcategory) throws Exception {
         // Send GET request
         String url = "https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39&origin=" + origin + "&radius=" + radius;
+
+        if (!category.equals("0"))
+            url += "&category=" + category;
+        if (!subcategory.equals("0"))
+            url += "&subcategory=" + subcategory;
+
         OffersResponse offersResponse = restTemplate.getForObject(url, OffersResponse.class);
         //JSONObject offersObject = new JSONObject(offersResponse.toString());
 
