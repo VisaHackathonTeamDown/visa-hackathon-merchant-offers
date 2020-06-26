@@ -11,7 +11,7 @@ function App() {
         <p>Visa Small Business Rewards Platform</p>
       </header>
       <div className="app-container">
-          <Map />
+        <Map />
         <Merchants />
       </div>
     </div>
