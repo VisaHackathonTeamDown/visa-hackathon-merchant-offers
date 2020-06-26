@@ -14,7 +14,7 @@ import './Map.css'
 
 const mapStyles = {
   width: '45vw',
-  height: '45vh',
+  height: '45vh'
 };
 
 export class MapContainer extends Component {

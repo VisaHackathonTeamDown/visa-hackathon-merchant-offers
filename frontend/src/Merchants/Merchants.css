@@ -3,6 +3,7 @@
   width: 45vw;
   background-color: #FFFFFF;
   margin: 16px 8px 16px 8px;
+  z-index: 0;
 }
 
 .filter-container {
