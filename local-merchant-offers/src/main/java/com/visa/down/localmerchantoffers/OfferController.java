@@ -43,7 +43,6 @@ public class OfferController {
         // Send GET request
         String url = "https://sandbox.api.visa.com/vmorc/offers/v1/byfilter?business_segment=39&origin=" + origin + "&radius=" + radius;
         OffersResponse offersResponse = restTemplate.getForObject(url, OffersResponse.class);
-        //JSONObject offersObject = new JSONObject(offersResponse.toString());
 
         return offersResponse.getOffers();
     }

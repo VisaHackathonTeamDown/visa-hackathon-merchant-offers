@@ -29,18 +29,4 @@ public class OffersResponse {
     public void setOffers(Offers[] offers) {
         this.offers = offers;
     }
-    
-    @Override
-    public String toString() {
-        String json = "{\"offers\": [";
-        for (int i = 0; i < offers.length; i++) {
-            json += offers[i].toString();
-
-            if (i < offers.length - 1) {
-                json += ",";
-            }
-        }
-        json += "]}";
-        return  json;
-    }
 }
