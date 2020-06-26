@@ -28,10 +28,3 @@
   display: flex;
   justify-content: center;
 }
-
-.map-container, .merchants-container {
-  height: 90vh;
-  width: 45vw;
-  background-color: #FFFFFF;
-  margin: 16px 8px 16px 8px;
-}
