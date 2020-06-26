@@ -8,25 +8,11 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
 public class OffersResponse {
 
-    private int returnedResults;
     private Offers[] offers;
 
     public OffersResponse() {
     }
 
-    public int getReturnedResults() {
-        return returnedResults;
-    }
-
-    public void setReturnedResults(int returnedResults) {
-        this.returnedResults = returnedResults;
-    }
-
-    public Offers[] getOffers() {
-        return offers;
-    }
-
-    public void setOffers(Offers[] offers) {
-        this.offers = offers;
-    }
+    public Offers[] getOffers() { return offers; }
+    public void setOffers(Offers[] offers) { this.offers = offers; }
 }
