@@ -1,0 +1,104 @@
+.merchants-container {
+  height: 90vh;
+  width: 45vw;
+  background-color: #FFFFFF;
+  margin: 16px 8px 16px 8px;
+}
+
+.filter-container {
+	margin: 8px 8px 8px 8px;
+}
+
+.form-container, .criteria {
+	overflow: auto;
+}
+
+.criteria select {
+	background-color: #E4E4E4;
+	border: none;
+	width: calc((100% - 3 * 16px) / 3);
+	height: 24px;
+	margin: 0 8px 0 8px;
+	float: left;
+}
+
+.search-button {
+	background-color: #F7B600;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	float: right;
+	margin: 8px 8px 0 0;
+	width: 64px;
+	height: 24px;
+}
+
+.tags-container {
+	overflow: auto;
+}
+
+.tags-list {
+	list-style-type: none;
+	display: flex;
+	float: left;
+	width: 75%;
+	padding: 0px;
+}
+
+.tags-list li {
+	width: calc((100% - 3 * 16px) / 3);
+	height: 24px;
+}
+
+.filter-tag {
+	background-color: #1A1F71;
+	margin: 0 8px 0 8px;
+	color: white;
+	border-radius: 10px;
+}
+
+.list-container {
+	width: 100%;
+}
+
+.merchants-list {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0 16px 0 16px;
+}
+
+.merchants-list li {
+	height: 32px;
+	margin-bottom: 48px;
+}
+
+.merchant-row {
+	display: flex;
+	background-color: #DDDDDD;
+	align-items: center;
+}
+
+.merchant-info {
+	text-align: left;
+	margin-top: 4px;
+	margin-left: 16px;
+}
+
+.merchant-info h3 {
+	margin: 0 0 4px 0;
+}
+
+.merchant-info p {
+	margin: 0 0 4px 0;
+}
+
+.offers-button {
+	width: 64px;
+	height: 32px;
+	font-size: 16px;
+	border: none;
+	background-color: white;
+	border-radius: 8px;
+	margin-left: 200px;
+}

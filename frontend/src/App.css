@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #1A1F71;
+  min-height: min(60px, 10vh);
+  max-height: max(120px, 20vh);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: min(40px, 5vh);
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  font-weight: bold;
+  color: white;
+}
+
+.App-header p {
+  margin: 32px 0 32px 32px;
+}
+
+.app-container {
+  background-color: #DDDDDD;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.map-container, .merchants-container {
+  height: 90vh;
+  width: 45vw;
+  background-color: #FFFFFF;
+  margin: 16px 8px 16px 8px;
+}
