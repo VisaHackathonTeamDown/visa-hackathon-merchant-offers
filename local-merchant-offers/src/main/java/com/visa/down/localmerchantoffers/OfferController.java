@@ -53,7 +53,6 @@ public class OfferController {
             url += "&subcategory=" + subcategory;
 
         OffersResponse offersResponse = restTemplate.getForObject(url, OffersResponse.class);
-        //JSONObject offersObject = new JSONObject(offersResponse.toString());
 
         return offersResponse.getOffers();
     }
