@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Merchants from './Merchants/Merchants';
+import Map from './Map/Map'
 
 function App() {
   return (
@@ -10,9 +11,7 @@ function App() {
         <p>Visa Small Business Rewards Platform</p>
       </header>
       <div className="app-container">
-        <div className="map-container">
-          TODO: Map
-        </div>
+          <Map />
         <Merchants />
       </div>
     </div>
