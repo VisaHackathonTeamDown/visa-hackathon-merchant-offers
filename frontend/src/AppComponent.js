@@ -36,10 +36,17 @@ class AppComponent extends React.Component {
 		      <header className="App-header">
 		        <p>Visa Small Business Rewards Platform</p>
 		      </header>
+				<div className="modal" hidden={!this.state.showModal}>
+					{/* EDIT STARTING HERE ANGELA */}
+					<div className="modal-main">
+						This is some text
+						<button onClick={this.closeModal}>Close</button>
+					</div>
+					{/* EDIT UNTIL HERE ANGELA */}
+				</div>
 		      <div className="app-container">
 		        <Map />
 		        <Merchants openModal={this.showModal} />
-		        <Offers isVisible={this.state.showModal} closeModal={this.closeModal} />
 		      </div>
 		    </div>
 		);
