@@ -13,3 +13,10 @@
 	width: 80vw;
 	height: 80vh;
 }
+
+.white-rect {
+  position: absolute;
+  width: 80vw;
+  height: 80vh;
+  background: white;
+}
