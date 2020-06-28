@@ -14,14 +14,15 @@ class AppComponent extends React.Component {
 			showModal: false
 		}
 
-		this.showModal = this.showModal.bind(this);
+		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 	}
 
-	showModal() {
+	openModal(merchant) {
 		this.setState({
 			showModal: true
 		});
+		console.log(merchant); // Do something with the merchant data
 	}
 
 	closeModal() {
@@ -46,7 +47,7 @@ class AppComponent extends React.Component {
 				</div>
 		      <div className="app-container">
 		        <Map />
-		        <Merchants openModal={this.showModal} />
+		        <Merchants openModal={this.openModal} />
 		      </div>
 		    </div>
 		);
