@@ -4,39 +4,21 @@ import React, {
 import {
   Map,
   GoogleApiWrapper,
-  Marker
+  Marker,
+  InfoWindow
 } from 'google-maps-react';
-
 import Autocomplete from 'react-google-autocomplete';
-import Geocode from 'react-geocode';
-
+import Geocode from "react-geocode";
 import './Map.css'
+
 
 const mapStyles = {
   width: '45vw',
-  height: '45vh'
+  height: '80vh'
 };
 
 
-
-
-
 export class MapContainer extends Component {
-  state = {
-    location: ""
-  };
-
-  componentDidMount() {
-    const app = this;
-    function initAutocomplete() {
-      var input = document.getElementById("pac-input");
-      var searchBox = new window.google.maps.places.SearchBox(input);
-      searchBox.addListener("places_changed", function() {
-        app.setState({ location: document.getElementById("pac-input").value });
-      });
-    }
-    initAutocomplete();
-
   constructor(props) {
     super(props);
 
@@ -49,29 +31,42 @@ export class MapContainer extends Component {
   }
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
-      return <Marker key ={index} id ={index} position ={{lat: store.lat, lng: store.lng}}
+      return <Marker
+        key ={index}
+        id ={index}
+        position ={{lat: store.lat, lng: store.lng}}
       />
     }
 
     )
   }
 
-  handleChange = e => {
-    this.setState({ location: e.target.value });
-  };
 
-  render() {
+
+render() {
     return (
       <div className="map-container">
 
-        <Map
+      <Autocomplete
+       style={{
+        width: '175px',
+        height: '20px',
+        paddingLeft: '16px',
+        marginTop: '11px',
+        marginBottom: '11px'
+       }}
+       onPlaceSelected={ this.onPlaceSelected }
+       types={['(regions)']}
+      />
+
+      <Map
           google = {this.props.google}
           zoom = {10}
           style = {mapStyles}
           initialCenter = {{ lat: 38.889321, lng: -77.050166 }}
-        >
+      >
         {this.displayMarkers()}
-        </Map>
+      </Map>
       </div>
     );
   }
