@@ -36,6 +36,7 @@ export class MapContainer extends Component {
       });
     }
     initAutocomplete();
+  }
 
   constructor(props) {
     super(props);
