@@ -19,25 +19,6 @@ const mapStyles = {
 
 
 export class MapContainer extends Component {
-<<<<<<< HEAD
-=======
-  state = {
-    location: ""
-  };
-
-  componentDidMount() {
-    const app = this;
-    function initAutocomplete() {
-      var input = document.getElementById("pac-input");
-      var searchBox = new window.google.maps.places.SearchBox(input);
-      searchBox.addListener("places_changed", function() {
-        app.setState({ location: document.getElementById("pac-input").value });
-      });
-    }
-    initAutocomplete();
-  }
-
->>>>>>> 522c8438394847fc314bff61b568c34b8d52dacd
   constructor(props) {
     super(props);
 
