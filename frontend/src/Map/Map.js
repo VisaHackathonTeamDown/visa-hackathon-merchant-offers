@@ -19,8 +19,6 @@ const mapStyles = {
 
 
 
-
-
 export class MapContainer extends Component {
   state = {
     location: ""
@@ -28,36 +26,45 @@ export class MapContainer extends Component {
 
   componentDidMount() {
     const app = this;
+
     function initAutocomplete() {
       var input = document.getElementById("pac-input");
       var searchBox = new window.google.maps.places.SearchBox(input);
-      searchBox.addListener("places_changed", function() {
-        app.setState({ location: document.getElementById("pac-input").value });
+      searchBox.addListener("places_changed", function () {
+        app.setState({
+          location: document.getElementById("pac-input").value
+        });
       });
     }
     initAutocomplete();
+  }
 
   constructor(props) {
     super(props);
 
     this.state = {
-      stores: [
-              { lat: 38.892038, lng: -77.198847 },
-              { lat: 38.492837, lng: -76.894038 }
-              ]
+      stores: [{
+        lat: 38.892038,
+        lng: -77.198847
+      }, {
+        lat: 38.492837,
+        lng: -76.894038
+      }]
     }
   }
   displayMarkers = () => {
     return this.state.stores.map((store, index) => {
-      return <Marker key ={index} id ={index} position ={{lat: store.lat, lng: store.lng}}
+        return <Marker key ={index} id ={index} position ={{lat: store.lat, lng: store.lng}}
       />
-    }
+      }
 
     )
   }
 
   handleChange = e => {
-    this.setState({ location: e.target.value });
+    this.setState({
+      location: e.target.value
+    });
   };
 
   render() {
