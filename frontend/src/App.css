@@ -32,14 +32,26 @@
 
 .modal {
   position: absolute;
+  align-self: center;
   top: 0;
-  left: 0;
+  left: 10;
   z-index: 10;
+  background-color: #00000099;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-main {
   background-color: white;
-  width: 80vw;
-  height: 80vh;
+  position: absolute;
+  align-self: center;
+  top: 10vh;
+  left: 20vw;
+  height: 80%;
+  width: 60%;
   border: solid;
-  border-color: black;
+  border-color: #00000036;
+  border-width: 2px;
 }
 
 .modal-main {
@@ -131,4 +143,66 @@
   display: inline-block;
   float: right;
   margin-right: 48px;
+}
+
+.merch-info {
+  text-align: left;
+  margin-left: 24px;
+}
+
+.merch-info h3 {
+  font-size: 5vh;
+  margin: 0 0 2px 0;
+}
+
+.merch-info p {
+  font-size: 3vh;
+  margin: 0 0 2px 0;
+}
+
+.close-button {
+  margin-left: 55vw;
+  margin-top: 1vh;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+}
+
+.offers-title {
+  text-align: left;
+  margin: 6px 0 0 24px;
+  font-size: 4vh;
+}
+
+.offers-subtitle {
+  text-align: left;
+  width: 56vw;
+  height: 74px;
+  margin: 0 24px 0 0;
+  color: white;
+  background-color: #1A1F71;
+}
+
+.offers-subtitle p {
+  font-size: 3vh;
+  margin: 0 0 0 0;
+}
+
+.offers-list {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0 16px 0 16px;
+}
+
+.offers-list li {
+  height: 32px;
+  margin-bottom: 48px;
+}
+
+.offer-row {
+  display: flex;
+  background-color: #DDDDDD;
+  align-items: center;
 }

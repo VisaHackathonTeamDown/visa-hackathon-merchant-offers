@@ -126,8 +126,28 @@ class AppComponent extends React.Component {
 				<div className="modal" hidden={!this.state.showModal}>
 					{/* EDIT STARTING HERE ANGELA */}
 					<div className="modal-main">
-						This is some text
-						<button onClick={this.closeModal}>Close</button>
+						<div className="top-merchant">
+							<button className="close-button" 
+								onClick={this.closeModal}>X
+							</button>
+							<div className="merch-info">
+								<h3>Merchant name</h3>
+								<p>Merchant address</p>
+								<p>Merchant categories</p>
+							</div>
+						</div>
+						<div className="bottom-offers">
+							<div className="offers-title">
+								<p>Offers Page 1 of 4 </p>
+								<div className="offers-subtitle">
+									<p> title released expiration </p>
+								</div>
+							</div>
+						
+							<div className="list-container">
+								<ul className="offers-list">{offersList}</ul>
+							</div>
+						</div>
 					</div>
 					<div className="offers-list-container">
 						<div className="control-bar">
@@ -155,6 +175,7 @@ class AppComponent extends React.Component {
 							</ul>
 						</div>
 					</div>
+
 					{/* EDIT UNTIL HERE ANGELA */}
 				</div>
 		      <div className="app-container">
