@@ -6,6 +6,10 @@ import Offer from './Offer';
 
 class Merchants extends React.Component {
 
+	categories = ["Any", "Food & Wine", "Travel", "Retail"]
+	redemptionChannels = ["Any", "In Store / Offline", "Online /Web/eCommerce"]
+	paymentTypes = ["Any", "Credit", "Debit", "Pre-Paid", "Visa PayWave"]
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -43,25 +47,31 @@ class Merchants extends React.Component {
 	}
 
 	filterByCategory(categories) {
-		return this.state.category && categories.includes(this.state.category);
+		return !this.state.category || (this.state.category && categories.includes(this.state.category));
 	}
 
 	filterByRedemptionChannel(redemptionChannels) {
-		return this.state.redemptionChannel && redemptionChannels.includes(this.state.redemptionChannel);
+		return !this.state.redemptionChannel || (this.state.redemptionChannel && redemptionChannels.includes(this.state.redemptionChannel));
 	}
 
 	filterByPaymentType(paymentTypes) {
-		return this.state.paymentType && paymentTypes.includes(this.state.paymentType);
+		return !this.state.paymentType || (this.state.paymentType && paymentTypes.includes(this.state.paymentType));
 	}
 
 	filterOffer(criteria) {
 		const byCategory = this.filterByCategory(criteria.categories);
 		const byRedemptionChannel = this.filterByRedemptionChannel(criteria.redemptionChannels);
-		const byPaymentType = this.filterByPaymentType(criteria.paymentTypes)
-		return (!byCategory && !byRedemptionChannel && !byPaymentType) ||
-			byCategory ||
-			byRedemptionChannel ||
-			byPaymentType;
+		const byPaymentType = this.filterByPaymentType(criteria.paymentTypes);
+		return (!this.state.category && !this.state.redemptionChannel && !this.state.paymentType) ||
+			(byCategory && byRedemptionChannel && byPaymentType);
+	}
+
+	setLocations() {
+		let locations = [];
+		for (const merchant in this.state.merchants) {
+			locations.push(this.state.merchants[merchant].location);
+		}
+		this.props.setLocations(locations);
 	}
 
 	handleSubmit(event) {
@@ -91,6 +101,7 @@ class Merchants extends React.Component {
 						merchants: tempMerchants
 					});
 					this.addTags();
+					this.setLocations();
 				},
 				(error) => {
 					window.alert("error fetching offers");
@@ -130,6 +141,24 @@ class Merchants extends React.Component {
 			);
 		});
 
+		let categoriesList = this.categories.map((category) => {
+			return (
+				<option value={category == "Any" ? "" : category}>{category}</option>
+			);
+		});
+
+		let redemptionChannelsList = this.redemptionChannels.map((channel) => {
+			return (
+				<option value={channel == "Any" ? "" : channel}>{channel}</option>
+			);
+		});
+
+		let paymentTypesList = this.paymentTypes.map((type) => {
+			return (
+				<option value={type == "Any" ? "" : type}>{type}</option>
+			);
+		});
+
 		return (
 			<div className="merchants-container">
 				<div className="filter-container">
@@ -137,16 +166,19 @@ class Merchants extends React.Component {
 						<form onSubmit={this.handleSubmit}>
 							<div className="criteria">
 								<select name="category" onChange={this.handleChange}>
-									<option value="">Any Category</option>
-									<option value="Retail">Retail</option>
+									<optgroup label="Categories">
+										{categoriesList}
+									</optgroup>
 								</select>
 								<select name="redemptionChannel" onChange={this.handleChange}>
-									<option value="">Any Redemption Channel</option>
-									<option value="In Store / Offline">In Store / Offline</option>
+									<optgroup label="Redemption Channels">
+										{redemptionChannelsList}
+									</optgroup>
 								</select>
 								<select name="paymentType" onChange={this.handleChange}>
-									<option value="">Any Card Payment Type</option>
-									<option value="Credit">Credit</option>
+									<optgroup label="Payment Types">
+										{paymentTypesList}
+									</optgroup>
 								</select>
 							</div>
 							<input className="search-button" type="submit" value="Search" />

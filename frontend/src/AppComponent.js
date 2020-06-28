@@ -1,21 +1,28 @@
 import React from 'react';
-import ReactModal from 'react-modal';
 import './App.css';
 
 import Merchants from './Merchants/Merchants';
-import Map from './Map/Map'
-import Offers from './Merchants/Offers/Offers';
+import Map from './Map/Map';
 
 class AppComponent extends React.Component {
 
 	constructor() {
 		super();
 		this.state = {
-			showModal: false
+			showModal: false,
+			locations: []
 		}
 
+		this.setLocations = this.setLocations.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
+	}
+
+	setLocations(coordinates) {
+		this.setState({
+			locations: coordinates
+		});
+		console.log(this.state.locations); // Sent to Map component
 	}
 
 	openModal(merchant) {
@@ -46,8 +53,8 @@ class AppComponent extends React.Component {
 					{/* EDIT UNTIL HERE ANGELA */}
 				</div>
 		      <div className="app-container">
-		        <Map />
-		        <Merchants openModal={this.openModal} />
+		        <Map locations={this.state.locations} />
+		        <Merchants setLocations={this.setLocations} openModal={this.openModal} />
 		      </div>
 		    </div>
 		);
