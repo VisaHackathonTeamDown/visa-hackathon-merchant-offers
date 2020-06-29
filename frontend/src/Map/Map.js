@@ -19,7 +19,35 @@ const mapStyles = {
 };
 
 class Contents extends Component {
+  function Search() {
+  const {
+    ready,
+    value,
+    suggestions: { status, data },
+    setValue,
+    clearSuggestion
+  } = usePlacesAutoComplete();
 
+  return (
+    <div className = "search">
+      <Combobox
+        onSelect = {(address) => {
+          console.log(address);
+        }}
+      >
+        <ComboboxInput value = {value} onChange = {(e) => {
+          setValue(e.target.value);
+          }}
+          disabled = {!ready}
+          placeholder = "Enter an address"
+        />
+        <ComboboxPopover>
+          { status === "OK" && data.Map}
+        </ComboboxPopover>
+      </Combobox>
+    </div>
+  );
+}
 }
 
 
