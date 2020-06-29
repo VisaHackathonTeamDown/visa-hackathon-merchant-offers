@@ -5,11 +5,12 @@ import {
   Map,
   GoogleApiWrapper,
   Marker,
-  InfoWindow
+  InfoWindow,
+  SearchBox
 } from 'google-maps-react';
 import Autocomplete from 'react-google-autocomplete';
-import Geocode from "react-geocode";
 import './Map.css'
+
 
 
 const mapStyles = {
@@ -17,60 +18,54 @@ const mapStyles = {
   height: '80vh'
 };
 
+class Contents extends Component {
+
+}
 
 export class MapContainer extends Component {
   constructor(props) {
     super(props);
-
+    //const {lat, lng} = this.props.initialCenter;
     this.state = {
-      stores: [
-              { lat: 38.892038, lng: -77.198847 },
-              { lat: 38.492837, lng: -76.894038 }
-              ]
+        currentLocation: {
+          lat: 38.89321,
+          lng: -77.050166
+          //lat: lat,
+          //lng: lng
+        },
+        showingInfoWindow: false,  //Hides or the shows the infoWindow
+        activeMarker: {},          //Shows the active marker upon click
+        selectedPlace: {}          //Shows the infoWindow to the selected place upon a marker
     }
   }
-  displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
-      return <Marker
-        key ={index}
-        id ={index}
-        position ={{lat: store.lat, lng: store.lng}}
-      />
-    }
-
-    )
-  }
 
 
-
-render() {
+  render() {
     return (
-      <div className="map-container">
+        <div className="map-container">
 
-      <Autocomplete
-       style={{
-        width: '175px',
-        height: '20px',
-        paddingLeft: '16px',
-        marginTop: '11px',
-        marginBottom: '11px'
-       }}
-       onPlaceSelected={ this.onPlaceSelected }
-       types={['(regions)']}
-      />
+        <Autocomplete
+          style={{
+            width: '500px',
+            height: '20px',
+            paddingLeft: '5px',
+            marginTop: '11px',
+            marginBottom: '11px'
+          }}
+          types = {['(regions)'],['address'], ['establishment']}
+        />
 
-      <Map
+        <Map
           google = {this.props.google}
           zoom = {10}
           style = {mapStyles}
-          initialCenter = {{ lat: 38.889321, lng: -77.050166 }}
-      >
-        {this.displayMarkers()}
-      </Map>
-      </div>
-    );
+          center = {{lat: 38.89321,
+          lng: -77.050166}}
+          />
+        </div>
+      );
+    }
   }
-}
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyDbqBL1-PmwoQqfn7uQWLQaK9hPJFJQ8Ew'
