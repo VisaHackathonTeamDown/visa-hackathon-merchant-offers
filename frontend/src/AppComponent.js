@@ -136,11 +136,17 @@ class AppComponent extends React.Component {
 			}) : null;
 
 		if (this.state.merchant && this.state.visibleOffer) {
-			// EDIT HERE
+			const id=this.state.visibleOffer
+			var description= "asdf"
+			for (const offer in this.state.merchant.offers) {
+				if (this.state.merchant.offers[offer].offerId == id) {
+					description = this.state.merchant.offers[offer].fullDescription
+				}
+			}
 			offersList.push(
 				<li>
 					<div className="offer-description">
-						This is a description
+						{description}
 					</div>
 				</li>
 			);
