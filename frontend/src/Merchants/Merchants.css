@@ -84,14 +84,11 @@
 	margin: 0 16px 0 16px;
 }
 
-.merchants-list li {
-	margin-bottom: 48px;
-}
-
 .merchant-row {
 	width: 100%;
 	background-color: #DDDDDD;
 	overflow: hidden;
+	margin-bottom: 8px;
 }
 
 .merchant-info {
@@ -121,12 +118,11 @@
 	outline: none;
 	float: right;
 	display: block;
+	margin-right: 16px;
+	-ms-transform: translateY(75%);
+	transform: translateY(75%);
 }
 
 .offers-button:hover {
 	background-color: #EDEDED;
-}
-
-.offers-button:active {
-	transform: translateY(1px);
 }

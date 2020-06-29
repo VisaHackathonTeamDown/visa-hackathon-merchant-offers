@@ -76,7 +76,8 @@ class Merchants extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		fetch("http://visahackathonlocaloffers-env.eba-4kqxvu3x.us-east-2.elasticbeanstalk.com/offers")
+		let searchCenter = this.props.center ? "?origin=" + this.props.center[0] + "," + this.props.center[1] : "";
+		fetch("http://visahackathonlocaloffers-env.eba-4kqxvu3x.us-east-2.elasticbeanstalk.com/offers" + searchCenter)
 			.then(res => res.json())
 			.then(
 				(result) => {
@@ -190,6 +191,7 @@ class Merchants extends React.Component {
 				</div>
 				<div className="list-container">
 					<ul className="merchants-list">{merchantsList}</ul>
+					<div hidden={merchantsList.length}>There are no local businesses that match your criteria.</div>
 				</div>
 			</div>
 		);

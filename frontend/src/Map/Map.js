@@ -31,6 +31,7 @@ export class MapContainer extends Component {
         lng: place.geometry.location.lng()
       }
     });
+    this.props.setCenter(this.state.currentLocation);
   }
 
   render() {

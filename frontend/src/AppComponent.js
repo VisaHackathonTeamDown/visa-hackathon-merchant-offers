@@ -18,15 +18,23 @@ class AppComponent extends React.Component {
 			prevDisabled: true,
 			nextDisabled: false,
 			merchant: null,
-			visibleOffer: null
+			visibleOffer: null,
+			center: []
 		}
 
+		this.setCenter = this.setCenter.bind(this);
 		this.setLocations = this.setLocations.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.prevPage = this.prevPage.bind(this);
 		this.nextPage = this.nextPage.bind(this);
 		this.handleOfferClick = this.handleOfferClick.bind(this);
+	}
+
+	setCenter(location) {
+		this.setState({
+			center: [location.lat, location.lng]
+		});
 	}
 
 	setLocations(coordinates) {
@@ -69,7 +77,6 @@ class AppComponent extends React.Component {
 	}
 
 	prevPage() {
-
 		if (this.state.pageNumber == 2) {
 			this.setState({
 				pageNumber: this.state.pageNumber - 1,
@@ -198,8 +205,8 @@ class AppComponent extends React.Component {
 					</div>
 				</div>
 		      <div className="app-container">
-		        <Map locations={this.state.locations} />
-		        <Merchants setLocations={this.setLocations} openModal={this.openModal} />
+		        <Map setCenter={this.setCenter} locations={this.state.locations} />
+		        <Merchants setLocations={this.setLocations} center={this.state.center} openModal={this.openModal} />
 		      </div>
 		    </div>
 		);
