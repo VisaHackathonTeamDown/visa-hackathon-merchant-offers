@@ -54,6 +54,92 @@
   border-width: 2px;
 }
 
+.control-bar {
+  width: 100%;
+  overflow: auto;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.list-title {
+  float: left;
+  margin-left: 16px;
+}
+
+.page-controls {
+  float: right;
+  margin-right: 16px;
+}
+
+.page-controls button {
+  background-color: white;
+  border: none;
+  font-size: 24px;
+}
+
+.offers {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0 16px 0 16px;
+}
+
+.info-row {
+  width: 100%;
+  background-color: #1A1F71;
+  color: white;
+  font-size: 24px;
+  margin-top: 8px;
+  padding: 4px 0 4px 0;
+}
+
+.title {
+  display: inline-block;
+  float: left;
+  margin-left: 8px;
+}
+
+.released {
+  display: inline-block;
+  margin-left: 96px;
+}
+
+.expiration {
+  display: inline-block;
+  float: right;
+  margin-right: 48px;
+}
+
+.offer-row-button {
+  background-color: #E4E4E4;
+  border: none;
+  width: 100%;
+  padding: 4px 0 4px 0;
+  margin: 4px 0 4px 0;
+}
+
+.offer-row {
+  width: 100%;
+  background-color: #E4E4E4;
+  color: #1A1F71;
+}
+
+.offer-title {
+  display: inline-block;
+  float: left;
+  margin-left: 8px;
+}
+
+.offer-released {
+  display: inline-block;
+  margin-left: 96px;
+}
+
+.offer-expiration {
+  display: inline-block;
+  float: right;
+  margin-right: 48px;
+}
+
 .merch-info {
   text-align: left;
   margin-left: 24px;
@@ -79,39 +165,19 @@
   border-radius: 8px;
 }
 
-.offers-title {
-  text-align: left;
-  margin: 6px 0 0 24px;
-  font-size: 4vh;
-}
-
-.offers-subtitle {
-  text-align: left;
-  width: 56vw;
-  height: 74px;
-  margin: 0 24px 0 0;
-  color: white;
-  background-color: #1A1F71;
-}
-
-.offers-subtitle p {
-  font-size: 3vh;
-  margin: 0 0 0 0;
-}
-
 .offers-list {
   list-style-type: none;
   padding: 0px;
-  margin: 0 16px 0 16px;
-}
-
-.offers-list li {
-  height: 32px;
-  margin-bottom: 48px;
+  margin: 0 24px 0 0;
 }
 
 .offer-row {
   display: flex;
   background-color: #DDDDDD;
   align-items: center;
+}
+
+.offers-list-container {
+  margin-top: 16px;
+  margin-left: 8px;
 }
