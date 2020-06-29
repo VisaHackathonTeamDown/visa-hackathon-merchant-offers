@@ -28,6 +28,7 @@
   height: 100vh;
   display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .modal {
@@ -65,7 +66,7 @@
 
 .page-controls {
   float: right;
-  margin-right: 16px;
+  margin-right: 32px;
 }
 
 .page-controls button {
@@ -74,6 +75,10 @@
   font-size: 24px;
   cursor: pointer;
   border: none;
+}
+
+.page-controls button:disabled {
+  cursor: auto;
 }
 
 .offers {
