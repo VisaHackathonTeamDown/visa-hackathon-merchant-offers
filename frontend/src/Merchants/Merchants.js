@@ -191,6 +191,7 @@ class Merchants extends React.Component {
 				</div>
 				<div className="list-container">
 					<ul className="merchants-list">{merchantsList}</ul>
+					<div hidden={merchantsList.length}>There are no local businesses that match your criteria.</div>
 				</div>
 			</div>
 		);
