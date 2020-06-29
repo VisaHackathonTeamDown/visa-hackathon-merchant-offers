@@ -21,6 +21,7 @@
 	height: 24px;
 	margin: 0 8px 0 8px;
 	float: left;
+	outline: none;
 }
 
 .search-button {
@@ -33,6 +34,16 @@
 	margin: 8px 8px 0 0;
 	width: 64px;
 	height: 24px;
+	cursor: pointer;
+	outline: none;
+}
+
+.search-button:hover {
+	background-color: #E8AB00;
+}
+
+.search-button:active {
+	transform: translateY(1px);
 }
 
 .tags-container {
@@ -48,7 +59,7 @@
 }
 
 .tags-list li {
-	width: calc((100% - 3 * 16px) / 3);
+	width: auto;
 	height: 24px;
 }
 
@@ -56,7 +67,11 @@
 	background-color: #1A1F71;
 	margin: 0 8px 0 8px;
 	color: white;
-	border-radius: 10px;
+	border-radius: 16px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 .list-container {
@@ -70,20 +85,22 @@
 }
 
 .merchants-list li {
-	height: 32px;
 	margin-bottom: 48px;
 }
 
 .merchant-row {
-	display: flex;
+	width: 100%;
 	background-color: #DDDDDD;
-	align-items: center;
+	overflow: hidden;
 }
 
 .merchant-info {
 	text-align: left;
 	margin-top: 4px;
 	margin-left: 16px;
+	float: left;
+	width: 50%;
+	display: block;
 }
 
 .merchant-info h3 {
@@ -95,11 +112,21 @@
 }
 
 .offers-button {
-	width: 64px;
-	height: 32px;
+	padding: 8px;
 	font-size: 16px;
 	border: none;
 	background-color: white;
-	border-radius: 8px;
-	margin-left: 200px;
+	border-radius: 10px;
+	cursor: pointer;
+	outline: none;
+	float: right;
+	display: block;
+}
+
+.offers-button:hover {
+	background-color: #EDEDED;
+}
+
+.offers-button:active {
+	transform: translateY(1px);
 }

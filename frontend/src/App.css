@@ -49,9 +49,6 @@
   left: 20vw;
   height: 80%;
   width: 60%;
-  border: solid;
-  border-color: #00000036;
-  border-width: 2px;
 }
 
 .control-bar {
@@ -75,6 +72,8 @@
   background-color: white;
   border: none;
   font-size: 24px;
+  cursor: pointer;
+  border: none;
 }
 
 .offers {
@@ -115,11 +114,20 @@
   width: 100%;
   padding: 4px 0 4px 0;
   margin: 4px 0 4px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.offer-row-button:hover {
+  background-color: #DADADA;
+}
+
+.offer-row-button:active {
+  transform: translateY(1px);
 }
 
 .offer-row {
   width: 100%;
-  background-color: #E4E4E4;
   color: #1A1F71;
 }
 
@@ -163,18 +171,23 @@
   font-size: 16px;
   border: none;
   border-radius: 8px;
+  background-color: #E4E4E4;
+  cursor: pointer;
+  outline: none;
+}
+
+.close-button:hover {
+  background-color: #DADADA;
+}
+
+.close-button:active {
+  transform: translateY(1px);
 }
 
 .offers-list {
   list-style-type: none;
   padding: 0px;
   margin: 0 24px 0 0;
-}
-
-.offer-row {
-  display: flex;
-  background-color: #DDDDDD;
-  align-items: center;
 }
 
 .offers-list-container {

@@ -135,13 +135,23 @@ class AppComponent extends React.Component {
 				);
 			}) : null;
 
+		if (this.state.merchant && this.state.visibleOffer) {
+			// EDIT HERE
+			offersList.push(
+				<li>
+					<div className="offer-description">
+						This is a description
+					</div>
+				</li>
+			);
+		}
+
 		return (
 			<div className="App">
 		      <header className="App-header">
 		        <p>Visa Small Business Rewards Platform</p>
 		      </header>
 				<div className="modal" hidden={!this.state.showModal}>
-					{/* EDIT STARTING HERE ANGELA */}
 					<div className="modal-main">
 						<div className="top-merchant">
 							<button className="close-button" 
@@ -180,8 +190,6 @@ class AppComponent extends React.Component {
 							</div>
 						</div>
 					</div>
-
-					{/* EDIT UNTIL HERE ANGELA */}
 				</div>
 		      <div className="app-container">
 		        <Map locations={this.state.locations} />
