@@ -161,12 +161,12 @@ class AppComponent extends React.Component {
 
 		return (
 			<div className="App">
-		      <header className="App-header">
-		        <p>Visa Small Business Rewards Platform</p>
-		      </header>
+		      	<header className="App-header">
+		        	<p>Visa Small Business Rewards Platform</p>
+		      	</header>
 				<div className="modal" hidden={!this.state.showModal}>
 					<div className="modal-main">
-						<div className="top-merchant">
+						<div>
 							<button className="close-button" 
 								onClick={this.closeModal}>X
 							</button>
@@ -204,10 +204,10 @@ class AppComponent extends React.Component {
 						</div>
 					</div>
 				</div>
-		      <div className="app-container">
-		        <Map setCenter={this.setCenter} locations={this.state.locations} />
-		        <Merchants setLocations={this.setLocations} center={this.state.center} openModal={this.openModal} />
-		      </div>
+		      	<div className="app-container">
+		        	<Map setCenter={this.setCenter} locations={this.state.locations} />
+		        	<Merchants setLocations={this.setLocations} center={this.state.center} openModal={this.openModal} />
+		      	</div>
 		    </div>
 		);
 	}
