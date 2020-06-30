@@ -57,10 +57,15 @@ export class MapContainer extends Component {
         <Autocomplete
           style={{
             width: '90%',
-            height: '20px',
-            paddingLeft: '5px',
-            marginTop: '11px',
-            marginBottom: '11px'
+            height: '32px',
+            paddingLeft: '8px',
+            marginTop: '16px',
+            marginBottom: '16px',
+            backgroundColor: '#EDEDED',
+            border: 'none',
+            fontSize: '18px',
+            outline: 'none',
+            overflow: 'scroll'
           }}
           onPlaceSelected={(place) => this.handlePlaceSelected(place)}
           types = {['(regions)'],['address'], ['establishment']}
@@ -70,8 +75,9 @@ export class MapContainer extends Component {
           google = {this.props.google}
           zoom = {10}
           style = {{
-            width: '45vw',
-            height: '80vh'
+            width: '41vw',
+            height: '41vw',
+            marginLeft: '24px'
           }}
           center = {this.state.currentLocation}
         >

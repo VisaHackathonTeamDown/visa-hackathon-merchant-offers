@@ -143,11 +143,11 @@ class AppComponent extends React.Component {
 			}) : null;
 
 		if (this.state.merchant && this.state.visibleOffer) {
-			const id=this.state.visibleOffer
-			var description= "asdf"
+			const id = this.state.visibleOffer;
+			let description = "";
 			for (const offer in this.state.merchant.offers) {
 				if (this.state.merchant.offers[offer].offerId == id) {
-					description = this.state.merchant.offers[offer].fullDescription
+					description = this.state.merchant.offers[offer].fullDescription;
 				}
 			}
 			offersList.push(

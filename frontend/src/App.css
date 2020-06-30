@@ -94,34 +94,40 @@
   font-size: 24px;
   margin-top: 8px;
   padding: 4px 0 4px 0;
+  margin-bottom: -2px;
 }
 
 .title {
   display: inline-block;
+  text-align: left;
   float: left;
-  margin-left: 8px;
+  margin-left: 16px;
+  width: 50%;
 }
 
 .released {
   display: inline-block;
-  margin-left: 96px;
+  text-align: left;
+  width: 20%;
 }
 
 .expiration {
   display: inline-block;
+  text-align: left;
   float: right;
-  margin-right: 48px;
+  width: 20%;
 }
 
 .offer-row-button {
   background-color: #E4E4E4;
   border: none;
   width: 100%;
+  height: 40px;
   padding: 4px 0 4px 0;
-  margin: 4px 0 4px 0;
+  margin: 2px 0 2px 0;
   cursor: pointer;
   outline: none;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .offer-row-button:hover {
@@ -139,19 +145,24 @@
 
 .offer-title {
   display: inline-block;
+  text-align: left;
   float: left;
-  margin-left: 8px;
+  margin-left: 16px;
+  width: 50%;
+  overflow: hidden;
 }
 
 .offer-released {
   display: inline-block;
-  margin-left: 96px;
+  text-align: left;
+  width: 20%;
 }
 
 .offer-expiration {
   display: inline-block;
+  text-align: left;
   float: right;
-  margin-right: 48px;
+  width: 20%;
 }
 
 .merch-info {
@@ -203,8 +214,8 @@
 
 .offer-description {
   background-color: #E4E4E4;
-  font-size: 14px;
+  font-size: 16px;
   text-align: left;
   margin-top: 4px;
-  padding: 16px 24px 16px 24px;
+  padding: 16px 16px 16px 16px;
 }
