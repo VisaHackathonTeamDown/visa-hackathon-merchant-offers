@@ -16,13 +16,10 @@ export class MapContainer extends Component {
     super(props);
     this.state = {
       currentLocation: {},
-      markerLocations: this.props.locations,
       //showingInfoWindow: //false, Hides or the shows the infoWindow
       //activeMarker: {}, //Shows the active marker upon click
       //selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
     }
-    console.log(this.state);
-    console.log(this.state.markerLocations[0]);
 
     this.handlePlaceSelected = this.handlePlaceSelected.bind(this);
   }
@@ -33,15 +30,13 @@ export class MapContainer extends Component {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       },
-      markerLocations: this.props.locations
     });
     this.props.setCenter(this.state.currentLocation);
   }
 
   displayMarkers = () => {
-    if(this.state.markerLocations.length != 0){
-      return this.state.markerLocations.map((merchant, index) => {
-        console.log(merchant)
+    if (this.props.locations.length != 0) {
+      return this.props.locations.map((merchant, index) => {
         return <Marker
           key = {index}
           id = {index}
