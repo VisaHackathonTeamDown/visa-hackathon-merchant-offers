@@ -37,9 +37,15 @@ class AppComponent extends React.Component {
 		});
 	}
 
-	setLocations(coordinates) {
+	setLocations(merchants) {
 		this.setState({
-			locations: coordinates
+			locations: merchants.map((merchant) => {
+				return {
+					name: merchant.name,
+					address: merchant.address,
+					location: merchant.location
+				};
+			})
 		});
 	}
 
