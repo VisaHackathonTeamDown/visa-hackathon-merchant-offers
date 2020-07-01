@@ -23,6 +23,7 @@ export class MapContainer extends Component {
     }
     console.log(this.state);
     console.log(this.state.markerLocations[0]);
+
     this.handlePlaceSelected = this.handlePlaceSelected.bind(this);
   }
 
@@ -31,23 +32,26 @@ export class MapContainer extends Component {
       currentLocation: {
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
-      }
+      },
+      markerLocations: this.props.locations
     });
     this.props.setCenter(this.state.currentLocation);
   }
 
   displayMarkers = () => {
-    return this.state.markerLocations.map((store, index) => {
-      console.log(store)
-      return <Marker
-        key = {index}
-        id = {index}
-        position = {{
-          lat: store[0],
-          lng: store[1]
-        }}
-      />
-    })
+    if(this.state.markerLocations.length != 0){
+      return this.state.markerLocations.map((merchant, index) => {
+        console.log(merchant)
+        return <Marker
+          key = {index}
+          id = {index}
+          position = {{
+            lat: merchant[0],
+            lng: merchant[1]
+          }}
+        />
+      })
+    }
   }
 
   render() {
@@ -67,7 +71,7 @@ export class MapContainer extends Component {
             outline: 'none',
             overflow: 'scroll'
           }}
-          onPlaceSelected={(place) => this.handlePlaceSelected(place)}
+          onPlaceSelected = {(place) => this.handlePlaceSelected(place)}
           types = {['(regions)'],['address'], ['establishment']}
         />
 
@@ -81,7 +85,7 @@ export class MapContainer extends Component {
           }}
           center = {this.state.currentLocation}
         >
-
+        {this.displayMarkers()}
         </Map>
         </div>
     );
