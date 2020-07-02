@@ -1,0 +1,221 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #1A1F71;
+  min-height: min(60px, 10vh);
+  max-height: max(120px, 20vh);
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: min(40px, 5vh);
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  font-weight: bold;
+  color: white;
+}
+
+.App-header p {
+  margin: 32px 0 32px 32px;
+}
+
+.app-container {
+  background-color: #DDDDDD;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modal {
+  position: absolute;
+  align-self: center;
+  top: 0;
+  left: 10;
+  z-index: 10;
+  background-color: #00000099;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal-main {
+  background-color: white;
+  position: absolute;
+  align-self: center;
+  top: 10vh;
+  left: 20vw;
+  height: 80%;
+  width: 60%;
+}
+
+.control-bar {
+  width: 100%;
+  overflow: auto;
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.list-title {
+  float: left;
+  margin-left: 16px;
+}
+
+.page-controls {
+  float: right;
+  margin-right: 32px;
+}
+
+.page-controls button {
+  background-color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+}
+
+.page-controls button:disabled {
+  cursor: auto;
+}
+
+.offers {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0 16px 0 16px;
+}
+
+.info-row {
+  width: 100%;
+  background-color: #1A1F71;
+  color: white;
+  font-size: 24px;
+  margin-top: 8px;
+  padding: 4px 0 4px 0;
+  margin-bottom: -2px;
+}
+
+.title {
+  display: inline-block;
+  text-align: left;
+  float: left;
+  margin-left: 16px;
+  width: 50%;
+}
+
+.released {
+  display: inline-block;
+  text-align: left;
+  width: 20%;
+}
+
+.expiration {
+  display: inline-block;
+  text-align: left;
+  float: right;
+  width: 20%;
+}
+
+.offer-row-button {
+  background-color: #E4E4E4;
+  border: none;
+  width: 100%;
+  height: 40px;
+  padding: 4px 0 4px 0;
+  margin: 2px 0 2px 0;
+  cursor: pointer;
+  outline: none;
+  font-size: 18px;
+}
+
+.offer-row-button:hover {
+  background-color: #DADADA;
+}
+
+.offer-row-button:active {
+  transform: translateY(1px);
+}
+
+.offer-row {
+  width: 100%;
+  color: #1A1F71;
+}
+
+.offer-title {
+  display: inline-block;
+  text-align: left;
+  float: left;
+  margin-left: 16px;
+  width: 50%;
+  overflow: hidden;
+}
+
+.offer-released {
+  display: inline-block;
+  text-align: left;
+  width: 20%;
+}
+
+.offer-expiration {
+  display: inline-block;
+  text-align: left;
+  float: right;
+  width: 20%;
+}
+
+.merch-info {
+  text-align: left;
+  margin-left: 24px;
+}
+
+.merch-info h3 {
+  font-size: 5vh;
+  margin: 0 0 2px 0;
+}
+
+.merch-info p {
+  font-size: 3vh;
+  margin: 0 0 2px 0;
+}
+
+.close-button {
+  margin-left: 55vw;
+  margin-top: 1vh;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #E4E4E4;
+  cursor: pointer;
+  outline: none;
+}
+
+.close-button:hover {
+  background-color: #DADADA;
+}
+
+.close-button:active {
+  transform: translateY(1px);
+}
+
+.offers-list {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0 24px 0 0;
+}
+
+.offers-list-container {
+  margin-top: 16px;
+  margin-left: 8px;
+}
+
+.offer-description {
+  background-color: #E4E4E4;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 4px;
+  padding: 16px 16px 16px 16px;
+}
