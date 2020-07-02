@@ -11,6 +11,7 @@ class Merchant {
 			return category.value;
 		});
 		this.offers = [];
+		this.marker = -1;
 	}
 
 	addOffer(offer) {

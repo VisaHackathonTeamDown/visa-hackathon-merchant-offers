@@ -68,8 +68,11 @@ class Merchants extends React.Component {
 
 	setLocations() {
 		let locations = [];
+		let index = 1;
 		for (const merchant in this.state.merchants) {
-			locations.push(this.state.merchants[merchant].location);
+			locations.push(this.state.merchants[merchant]);
+			this.state.merchants[merchant].marker = index;
+			index += 1;
 		}
 		this.props.setLocations(locations);
 	}
@@ -117,7 +120,7 @@ class Merchants extends React.Component {
 				<li>
 					<div className="merchant-row">
 						<div className="merchant-info">
-							<h3>{this.state.merchants[merchant].name}</h3>
+							<h3>{this.state.merchants[merchant].marker}. {this.state.merchants[merchant].name}</h3>
 							<p>{this.state.merchants[merchant].address}</p>
 							<p>{this.state.merchants[merchant].categories}</p>
 						</div>

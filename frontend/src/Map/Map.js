@@ -16,9 +16,6 @@ export class MapContainer extends Component {
     super(props);
     this.state = {
       currentLocation: {},
-      showingInfoWindow: false,//false, Hides or the shows the infoWindow
-      activeMarker: {}, //Shows the active marker upon click
-      selectedPlace: {} //Shows the infoWindow to the selected place upon a marker
     }
 
     this.handlePlaceSelected = this.handlePlaceSelected.bind(this);
@@ -34,27 +31,6 @@ export class MapContainer extends Component {
     this.props.setCenter(this.state.currentLocation);
   }
 
-  onMarkerClick = (props, marker) =>
-    this.setState({
-      activeMarker: marker,
-      selectedPlace: props,
-      showingInfoWindow: true
-    });
-
-  onInfoWindowClose = () =>
-    this.setState({
-      activeMarker: null,
-      showingInfoWindow: false
-    });
-
-  onMapClicked = () => {
-    if (this.state.showingInfoWindow)
-      this.setState({
-        activeMarker: null,
-        showingInfoWindow: false
-      });
-  };
-
   displayMarkers = () => {
     if (this.props.locations.length != 0) {
       return this.props.locations.map((merchant, index) => {
@@ -63,19 +39,11 @@ export class MapContainer extends Component {
           id = {index}
           onClick = {this.onMarkerClick}
           position = {{
-            lat: merchant[0],
-            lng: merchant[1]
+            lat: merchant.location[0],
+            lng: merchant.location[1]
           }}
+          label={(index + 1).toString()}
         >
-        <InfoWindow
-          marker={this.state.activeMarker}
-          onClose={this.onInfoWindowClose}
-          visible={this.state.showingInfoWindow}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
         </Marker>
       })
     }
@@ -84,7 +52,6 @@ export class MapContainer extends Component {
   render() {
     return (
       <div className="map-container">
-
         <Autocomplete
           style={{
             width: '90%',
@@ -104,7 +71,6 @@ export class MapContainer extends Component {
 
         <Map
           google = {this.props.google}
-          onClick = {this.onMapClicked}
           zoom = {10}
           style = {{
             width: '41vw',
@@ -113,8 +79,7 @@ export class MapContainer extends Component {
           }}
           center = {this.state.currentLocation}
         >
-        {this.displayMarkers()}
-
+          {this.displayMarkers()}
         </Map>
         </div>
     );
