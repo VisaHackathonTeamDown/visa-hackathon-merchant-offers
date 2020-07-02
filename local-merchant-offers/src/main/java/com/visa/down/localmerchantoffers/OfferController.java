@@ -1,5 +1,6 @@
 package com.visa.down.localmerchantoffers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ public class OfferController {
     private RestTemplate restTemplate;
 
     // Accept request with location and distance parameters
+    @CrossOrigin()
     @GetMapping("/offers")
     public Offers[] offers(@RequestParam(value = "origin", defaultValue = "38.889321,-77.050166") String origin,
                            @RequestParam(value = "radius", defaultValue = "10") int radius,
